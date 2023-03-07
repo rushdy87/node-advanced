@@ -1,0 +1,57 @@
+Node.js relies on various dependencies under the hood for providing various features.
+V8 //for running js files outside brosire 70%c++
+libuv // working with oprating system 100%C++
+________________________________________________________________________________________________________
+
+1.The Node source code is written in which two languages?
+- C++ and javascript
+2.What happens when the PBKDF2 hashing function from the crypto  module gets called by your application?
+- Some javascript code validates the function's arguments then some c++ code actually calculate the hash.
+3. Node includes both V8 and libuv as dependencies.  What is the difference between the two?
+- V8 is used to interpret and execute Javascript code, while libuv is used for accessing the filesystem 
+  and some aspects of concurrency.
+
+________________________________________________________________________________________________________
+The basics of Thread:
+- Process: is an instanse of computer program that is being executed.
+- In a single Proces we have a thread
+- A single Proces can have multiple threads on it.
+- A Threads are units of instruction that are waiting to be executed by the CPU.
+- Diciding which order to execute these threads in is refered to as Scheduling.
+- Scheduling is controled by oprating system.
+- There are two ways to improving the rate at which we process threads is to eather add more CPU cores
+  or to allow our os scheduler to detect big pauses in Procesing time due to expensive input output
+  oprations.
+________________________________________________________________________________________________________
+Event loop see (loop.js).
+________________________________________________________________________________________________________
+Is Node single threaded?
+- The Node event loop is single threaded.
+- Some of the functions that included inside standerd library of node are NOT single threaded. In oter words
+  some of functions that included inside standerd library of node are run OUTSIDE of our event loop and outside
+  of that single threaded.
+- see threads.js and run it..
+________________________________________________________________________________________________________
+Thread Pool:
+- The thread pool is series of four threads that can be used for running computationally intensivet tasks.
+- see threads.js and run it.. you will see the first 4 functions and same time then the 5th function.
+________________________________________________________________________________________________________
+Changing Thread pool size:
+process.env.UV_THREADPOOL_SIZE = the new size.
+________________________________________________________________________________________________________
+Explaining OS Operations
+- see async.js
+- What functions in node js standerd library use the os async features?
+  Almost everything around the network for all os's. Some other stuff is os specific.
+- How does this os async stuff fit into the event loop?
+- Tasks using the underlying os are reflected in our 'pindingOSTasks' array.
+________________________________________________________________________________________________________
+See Figur1.png
+________________________________________________________________________________________________________
+1. In a Node program, is the event loop single threaded?
+- Yes.
+2. Is the entirety (the whole thing) of a Node program single threaded?
+- No.
+________________________________________________________________________________________________________
+see mulyitask.js Why the console log in this order?
+see video (Unexpected Event Loop Events) in Section1 (Section 1: The Internals of Node)
